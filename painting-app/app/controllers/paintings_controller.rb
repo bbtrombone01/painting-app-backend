@@ -1,15 +1,17 @@
 class PaintingsController < ApplicationController
 
     def create
-        byebug
         painting = Painting.create(painting_params)
         
-        render json: painting  
+
+        result = {image: rails_blob_path(painting.image, only_path: true), user_id: painting.user_id,  topic_id: painting.topic_id}
+        
+        render json: result
     end
     
       private
         def painting_params
-          params.require(:painting).permit(:user_id, :topic_id, :painting)
+          params.permit(:user_id, :topic_id, :image)
         end
     
 
