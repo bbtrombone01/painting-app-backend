@@ -1,6 +1,7 @@
+Painting.delete_all 
 User.delete_all
 Topic.delete_all
-Painting.delete_all 
+
 
 u1 = User.create(username:"bob", password: "yay", tagline: "I am bob")
 t1 = Topic.create(topic: "happy")
