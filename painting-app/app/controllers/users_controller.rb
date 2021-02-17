@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    skip_before_action :authorized, only: [:create, :update]
+    skip_before_action :authorized, only: [:create]
 
     def index 
         users = User.all
@@ -12,7 +12,8 @@ class UsersController < ApplicationController
 
     def update 
         user = User.find_by(id: params[:id])
-        user.update(username: params[:username], password: user.password_digest, tagline: params[:tagline])
+        byebug
+        user.update(username: params[:user][:username], tagline: params[:user][:tagline])
         render json: user 
     end 
 
@@ -25,6 +26,12 @@ class UsersController < ApplicationController
             render json: {error: 'failed to create a user'}, status: :not_acceptable 
         end 
     end
+
+    def destroy
+        user = User.find_by(id: params[:id])
+        user.destroy
+        render json: {message: 'Your account has been deleted'}
+    end 
 
     private
     def user_params 
