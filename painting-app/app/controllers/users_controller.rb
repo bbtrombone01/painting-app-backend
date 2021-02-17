@@ -12,7 +12,6 @@ class UsersController < ApplicationController
 
     def update 
         user = User.find_by(id: params[:id])
-        byebug
         user.update(username: params[:user][:username], tagline: params[:user][:tagline])
         render json: user 
     end 
