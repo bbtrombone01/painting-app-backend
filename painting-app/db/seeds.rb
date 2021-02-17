@@ -9,5 +9,5 @@ t2 = Topic.create(topic: "sad")
 t3 = Topic.create(topic: "angry")
 t4 = Topic.create(topic: "excited")
 
-p1 = Painting.create( user_id: 1, topic_id: 1)
+# p1 = Painting.create( user_id: u1.id, topic_id: t1.id)
 

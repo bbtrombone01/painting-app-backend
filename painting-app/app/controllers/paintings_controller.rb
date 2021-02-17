@@ -1,5 +1,10 @@
 class PaintingsController < ApplicationController
   skip_before_action :authorized, only: [:create]
+
+  def index 
+    paintings = Painting.all 
+    render json: paintings
+  end 
   
     def create
         painting = Painting.create(painting_params)
